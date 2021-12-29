@@ -1,0 +1,22 @@
+src/contracts/MeoCardsTest.sol - contract what we use to create NFT's at OpenSea
+
+server.js (reqires mint.js) - nodejs script that takes id of NFT from database, and mint new item to contract 
+using mint.js (mint.js returns tokeId, and that tokenId goes back to database - then metadata for 
+NFT availabe by URL: https://api.meocards.com/api/get-card/{tokenId}
+)
+
+contracts/migrations/2_deploy_contracts.js - script to deploy contract
+
+gift.js - should transfer NFT to address (https://github.com/ProjectOpenSea/opensea-js#transferring-items-or-coins-gifting
+ - not sure it's a right way or better to use contract way) 
+(server.js line 20), 
+and should be called after mint.js (server.js line 24) inside server.js
+
+Problem: transfer doesn't work, no error or success message, goal is - chage NFT owner to provided address from database
+and add possibility to sell NFT by new owner  (using OpenSea SDK or Solidity)
+
+Environment settings:
+Nodejs 12.21.0
+NPM 6.14.18
+Truffle 5.0.20
+Solidity 0.5.17+commit.d19bba13 
